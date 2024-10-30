@@ -1,0 +1,6 @@
+data/dataset/
+data/2021LoveDA
+data/ABdata
+venv/
+__pycache__/
+models/

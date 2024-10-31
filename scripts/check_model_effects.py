@@ -84,11 +84,11 @@ plt.savefig(f"{save_path}/RSmodel_use_to_image.png")
 print("RSmodel_use_to_image.png has been saved.")
 
 #使用原始模型，作为对比
-raw_sam_model=SamModel(config=model_config)
+raw_sam_model= SamModel.from_pretrained("facebook/sam-vit-base")
 raw_sam_model.to(device)
 raw_sam_model.eval()
 with torch.no_grad():
-    outputs_raw = my_rs_model(**inputs, multimask_output=False)  # 模型推理
+    outputs_raw = raw_sam_model(**inputs, multimask_output=False)  # 模型推理
 # apply sigmoid
 raw_seg_prob = torch.sigmoid(outputs_raw.pred_masks.squeeze(1))
 # convert soft mask to hard mask
